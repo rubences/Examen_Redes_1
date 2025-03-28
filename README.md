@@ -1040,3 +1040,69 @@ Referencias
 Encapsulamiento en Redes - Wikipedia
 Cisco Packet Tracer - Documentación Oficial
 
+
+
+
+Simular el problema de Eficiencia del Sistema de Encapsulamiento en Cisco Packet Tracer no se puede realizar directamente a nivel de bytes o bits, ya que Packet Tracer no permite modelar el encapsulamiento en detalle. Sin embargo, podemos aproximar el concepto configurando un sistema de red que transmita datos entre dispositivos y analizando el tráfico generado para observar cómo las cabeceras y la fragmentación afectan la transmisión.
+
+Aquí tienes un paso a paso detallado para resolver el problema y simularlo en Cisco Packet Tracer:
+
+Resolviendo el Problema de Eficiencia del Sistema de Encapsulamiento en Cisco Packet Tracer
+Enunciado
+Simularemos un sistema de encapsulamiento en Cisco Packet Tracer para analizar cómo las cabeceras y la fragmentación afectan la transmisión de datos. Aunque no se puede modelar directamente el encapsulamiento, configuraremos un entorno de red para observar el tráfico generado y aproximar el impacto de la fragmentación.
+
+Paso a Paso
+Paso 1: Configurar el entorno en Cisco Packet Tracer
+Abrir Cisco Packet Tracer:
+
+Inicia el programa y abre un nuevo proyecto.
+Agregar dispositivos:
+
+Arrastra los siguientes dispositivos al área de trabajo:
+Dos PCs (PC0 y PC1).
+Un switch para conectar las PCs.
+Conectar los dispositivos:
+
+Usa cables directos para conectar las PCs al switch.
+Configurar direcciones IP:
+
+Asigna direcciones IP a las PCs:
+PC0: 192.168.1.1
+PC1: 192.168.1.2
+Configura la máscara de subred como 255.255.255.0.
+Paso 2: Configurar el tráfico de datos
+Configurar un servidor de archivos:
+
+En PC1, configura un servidor de archivos utilizando la herramienta de Servicios.
+Crea un archivo de 1.5 KB para simular los datos enviados desde la Capa 5.
+Configurar un cliente:
+
+En PC0, configura un cliente que descargue el archivo desde PC1.
+Capturar el tráfico:
+
+Haz clic en el switch y habilita la herramienta de Captura de Paquetes.
+Observa los paquetes que se transmiten entre PC0 y PC1.
+Paso 3: Analizar la fragmentación y las cabeceras
+Observar la fragmentación:
+
+Analiza los paquetes capturados para observar cómo el archivo de 1.5 KB se divide en tramas más pequeñas.
+Nota que cada trama incluye cabeceras adicionales para las capas de red y enlace.
+Calcular la sobrecarga:
+
+Suma el tamaño de las cabeceras observadas en los paquetes capturados.
+Compara el tamaño total de los datos transmitidos con el tamaño original del archivo.
+Paso 4: Simular la eficiencia del sistema
+Calcular la eficiencia:
+
+Usa la fórmula de eficiencia: [ \text{Eficiencia} = \frac{\text{Datos útiles}}{\text{Datos totales transmitidos}} \times 100 ]
+Sustituye los valores observados en la simulación.
+Comparar con los cálculos teóricos:
+
+Compara los resultados obtenidos en la simulación con los cálculos teóricos realizados previamente.
+Conclusión
+Aunque Cisco Packet Tracer no permite modelar directamente el encapsulamiento, esta simulación aproxima el impacto de las cabeceras y la fragmentación en la transmisión de datos. Observando el tráfico generado, podemos analizar cómo las cabeceras y la fragmentación afectan la eficiencia del sistema.
+
+Referencias
+Encapsulamiento en Redes - Wikipedia
+Cisco Packet Tracer - Documentación Oficial
+
