@@ -241,3 +241,294 @@ En este ejercicio, hemos configurado un canal de comunicación en **Cisco Packet
 - [Cisco Packet Tracer - Documentación Oficial](https://www.netacad.com/courses/packet-tracer)
 
 
+# Ejemplo de Código en Python para calcular la tasa de transmisión máxima
+```python
+import math
+def shannon_capacity(B, S, N):
+    """
+    Calcula la tasa de transmisión máxima utilizando la fórmula de Shannon.
+
+    Parámetros:
+    B (float): Ancho de banda en Hz.
+    S (float): Potencia de la señal en W.
+    N (float): Potencia del ruido en W.
+
+    Retorna:
+    float: Tasa de transmisión máxima en bps.
+    """
+    # Calcular la relación señal a ruido
+    SNR = S / N
+
+    # Calcular la capacidad del canal
+    C = B * math.log2(1 + SNR)
+
+    return C
+# Datos del problema
+B = 3 * 10**3  # Ancho de banda en Hz (3 kHz)
+S = 0.1  # Potencia de la señal en W (100 mW)
+N = 0.01  # Potencia del ruido en W (10 mW)
+# Calcular la tasa de transmisión máxima
+C = shannon_capacity(B, S, N)
+print(f"La tasa de transmisión máxima es: {C:.2f} bps")
+```
+### Ejecución del código
+```bash
+$ python shannon_capacity.py
+La tasa de transmisión máxima es: 10378.20 bps
+```
+### Notas
+- Asegúrate de tener instalado Python y la biblioteca `math` para ejecutar el código.
+- Puedes modificar los valores de **B**, **S** y **N** para calcular la tasa de transmisión máxima en diferentes escenarios.
+```
+# Fin del documento
+```
+# Ejercicio 8
+
+# Resolviendo el Problema de Ubicación de Portadoras para Eficiencia Espectral
+
+Este documento explica cómo determinar las frecuencias de las portadoras anterior y posterior en un sistema de comunicación, y analiza la importancia de la ubicación de las portadoras para la eficiencia espectral.
+
+---
+
+## Enunciado
+
+En un sistema de comunicación, la primera portadora se encuentra a **1.2 GHz** y el ancho de banda en banda base de cada canal es de **300 MHz**. Se pide:
+
+1. **a)** Determinar la frecuencia de la portadora anterior.
+2. **b)** Determinar la frecuencia de la portadora posterior.
+3. Justificar los cálculos y explicar la importancia de la ubicación de las portadoras para la eficiencia espectral.
+
+---
+
+## Paso a Paso
+
+### Datos iniciales
+- Frecuencia de la primera portadora (\( f_0 \)): **1.2 GHz**.
+- Ancho de banda en banda base (\( BW \)): **300 MHz**.
+
+---
+
+### Paso 1: Determinar la frecuencia de la portadora anterior
+La frecuencia de la portadora anterior (\( f_{anterior} \)) se calcula restando el ancho de banda del canal (\( BW \)) a la frecuencia de la portadora actual (\( f_0 \)):
+
+\[
+f_{anterior} = f_0 - BW
+\]
+
+Sustituyendo los valores:
+
+\[
+f_{anterior} = 1.2 \, \text{GHz} - 300 \, \text{MHz}
+\]
+
+Convertimos las unidades para que sean consistentes (\( 1.2 \, \text{GHz} = 1200 \, \text{MHz} \)):
+
+\[
+f_{anterior} = 1200 \, \text{MHz} - 300 \, \text{MHz}
+\]
+
+\[
+f_{anterior} = 900 \, \text{MHz}
+\]
+
+Por lo tanto, la frecuencia de la portadora anterior es:
+
+\[
+f_{anterior} = 900 \, \text{MHz}
+\]
+
+---
+
+### Paso 2: Determinar la frecuencia de la portadora posterior
+La frecuencia de la portadora posterior (\( f_{posterior} \)) se calcula sumando el ancho de banda del canal (\( BW \)) a la frecuencia de la portadora actual (\( f_0 \)):
+
+\[
+f_{posterior} = f_0 + BW
+\]
+
+Sustituyendo los valores:
+
+\[
+f_{posterior} = 1.2 \, \text{GHz} + 300 \, \text{MHz}
+\]
+
+Convertimos las unidades para que sean consistentes (\( 1.2 \, \text{GHz} = 1200 \, \text{MHz} \)):
+
+\[
+f_{posterior} = 1200 \, \text{MHz} + 300 \, \text{MHz}
+\]
+
+\[
+f_{posterior} = 1500 \, \text{MHz}
+\]
+
+Por lo tanto, la frecuencia de la portadora posterior es:
+
+\[
+f_{posterior} = 1500 \, \text{MHz}
+\]
+
+---
+
+### Paso 3: Justificación de los cálculos
+Los cálculos se basan en la separación de las portadoras por el ancho de banda del canal (\( BW \)). En un sistema de comunicación, las portadoras deben estar separadas por al menos el ancho de banda del canal para evitar interferencias entre canales adyacentes.
+
+---
+
+### Paso 4: Importancia de la ubicación de las portadoras para la eficiencia espectral
+La ubicación de las portadoras es crucial para maximizar la **eficiencia espectral**, que se define como la cantidad de información transmitida por unidad de ancho de banda. Una buena ubicación de las portadoras permite:
+
+1. **Minimizar la interferencia**:
+   - Si las portadoras están demasiado cerca, los canales se solapan, causando interferencia y pérdida de datos.
+   - Si están demasiado separadas, se desperdicia ancho de banda.
+
+2. **Optimizar el uso del espectro**:
+   - Al ubicar las portadoras con una separación adecuada (igual al ancho de banda del canal), se utiliza el espectro de manera eficiente, maximizando la capacidad del sistema.
+
+3. **Garantizar la calidad del servicio**:
+   - Una correcta ubicación de las portadoras asegura que cada canal tenga suficiente espacio para transmitir datos sin degradación de la señal.
+
+---
+
+## Resultado Final
+- **Frecuencia de la portadora anterior**: \( f_{anterior} = 900 \, \text{MHz} \)
+- **Frecuencia de la portadora posterior**: \( f_{posterior} = 1500 \, \text{MHz} \)
+
+---
+
+## Conclusión
+La ubicación de las portadoras en un sistema de comunicación es fundamental para garantizar la eficiencia espectral y la calidad del servicio. En este caso, las portadoras están separadas por el ancho de banda del canal (\( 300 \, \text{MHz} \)), lo que asegura un uso óptimo del espectro y evita interferencias entre canales.
+
+---
+
+## Referencias
+- [Eficiencia Espectral - Wikipedia](https://es.wikipedia.org/wiki/Eficiencia_espectral)
+- [Teoría de la Comunicación - Wikipedia](https://es.wikipedia.org/wiki/Teor%C3%ADa_de_la_comunicaci%C3%B3n)
+- [Ancho de Banda - Wikipedia](https://es.wikipedia.org/wiki/Ancho_de_banda)
+
+
+# Resolviendo el Problema de Ubicación de Portadoras para Eficiencia Espectral en Cisco Packet Tracer
+
+Este documento explica cómo simular un sistema de comunicación en **Cisco Packet Tracer** para analizar la ubicación de portadoras y su impacto en la eficiencia espectral.
+
+---
+
+## Enunciado
+
+En un sistema de comunicación, la primera portadora se encuentra a **1.2 GHz** y el ancho de banda en banda base de cada canal es de **300 MHz**. Se pide:
+
+1. **a)** Determinar la frecuencia de la portadora anterior.
+2. **b)** Determinar la frecuencia de la portadora posterior.
+3. Simular el sistema en **Cisco Packet Tracer** para analizar la eficiencia espectral.
+
+---
+
+## Paso a Paso
+
+### Paso 1: Determinar las frecuencias de las portadoras
+1. **Frecuencia de la portadora anterior (\( f_{anterior} \))**:
+   \[
+   f_{anterior} = f_0 - BW
+   \]
+   Donde:
+   - \( f_0 = 1.2 \, \text{GHz} \)
+   - \( BW = 300 \, \text{MHz} \)
+
+   Sustituyendo:
+   \[
+   f_{anterior} = 1.2 \, \text{GHz} - 300 \, \text{MHz} = 900 \, \text{MHz}
+   \]
+
+2. **Frecuencia de la portadora posterior (\( f_{posterior} \))**:
+   \[
+   f_{posterior} = f_0 + BW
+   \]
+
+   Sustituyendo:
+   \[
+   f_{posterior} = 1.2 \, \text{GHz} + 300 \, \text{MHz} = 1.5 \, \text{GHz}
+   \]
+
+Por lo tanto:
+- **Portadora anterior**: \( 900 \, \text{MHz} \)
+- **Portadora posterior**: \( 1.5 \, \text{GHz} \)
+
+---
+
+### Paso 2: Configurar el entorno en Cisco Packet Tracer
+1. **Abrir Cisco Packet Tracer**:
+   - Inicia el programa y abre un nuevo proyecto.
+
+2. **Agregar dispositivos**:
+   - Arrastra los siguientes dispositivos al área de trabajo:
+     - Un **Access Point** (AP).
+     - Dos **PCs inalámbricas** (PC0 y PC1).
+
+3. **Configurar el Access Point**:
+   - Haz clic en el Access Point y ve a la pestaña **Config**.
+   - Configura los siguientes parámetros:
+     - **SSID**: "Canal_1".
+     - **Frecuencia**: 1.2 GHz (representa la portadora actual).
+     - **Ancho de banda**: 300 MHz.
+
+4. **Configurar las PCs inalámbricas**:
+   - Haz clic en cada PC y ve a la pestaña **Config**.
+   - Conéctalas al Access Point configurado.
+
+---
+
+### Paso 3: Simular las portadoras anterior y posterior
+1. **Agregar un segundo Access Point**:
+   - Arrastra otro Access Point al área de trabajo.
+   - Configúralo con los siguientes parámetros:
+     - **SSID**: "Canal_Anterior".
+     - **Frecuencia**: 900 MHz (portadora anterior).
+     - **Ancho de banda**: 300 MHz.
+
+2. **Agregar un tercer Access Point**:
+   - Arrastra un tercer Access Point al área de trabajo.
+   - Configúralo con los siguientes parámetros:
+     - **SSID**: "Canal_Posterior".
+     - **Frecuencia**: 1.5 GHz (portadora posterior).
+     - **Ancho de banda**: 300 MHz.
+
+3. **Conectar PCs a los Access Points**:
+   - Conecta una PC al Access Point "Canal_Anterior".
+   - Conecta otra PC al Access Point "Canal_Posterior".
+
+---
+
+### Paso 4: Analizar la eficiencia espectral
+1. **Simular tráfico entre dispositivos**:
+   - Configura un servidor en la red y genera tráfico entre las PCs conectadas a los diferentes Access Points.
+   - Usa herramientas como **Ping** o **Traceroute** para verificar la conectividad.
+
+2. **Observar el uso del espectro**:
+   - Analiza cómo las frecuencias de las portadoras están separadas por el ancho de banda del canal (300 MHz).
+   - Asegúrate de que no haya interferencia entre los canales.
+
+3. **Comparar con los cálculos teóricos**:
+   - Verifica que las frecuencias de las portadoras (900 MHz, 1.2 GHz, y 1.5 GHz) coincidan con los valores calculados.
+
+---
+
+### Paso 5: Conclusión
+La simulación en **Cisco Packet Tracer** muestra cómo la ubicación de las portadoras afecta la eficiencia espectral. Al separar las portadoras por el ancho de banda del canal (300 MHz), se evita la interferencia entre canales y se optimiza el uso del espectro.
+
+---
+
+## Resultado Final
+- **Portadora anterior**: \( 900 \, \text{MHz} \)
+- **Portadora actual**: \( 1.2 \, \text{GHz} \)
+- **Portadora posterior**: \( 1.5 \, \text{GHz} \)
+
+La simulación confirma que la separación adecuada de las portadoras garantiza un uso eficiente del espectro y evita interferencias.
+
+---
+
+## Referencias
+- [Eficiencia Espectral - Wikipedia](https://es.wikipedia.org/wiki/Eficiencia_espectral)
+- [Cisco Packet Tracer - Documentación Oficial](https://www.netacad.com/courses/packet-tracer)
+- [Teoría de la Comunicación - Wikipedia](https://es.wikipedia.org/wiki/Teor%C3%ADa_de_la_comunicaci%C3%B3n)
+
+
