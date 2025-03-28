@@ -752,5 +752,291 @@ El orden de las modulaciones de mayor a menor robustez al ruido es:
 - [Cisco Packet Tracer - Documentación Oficial](https://www.netacad.com/courses/packet-tracer)
 
 
+# Ejercicio 10
 
+# Resolviendo el Problema de Eficiencia del Sistema de Encapsulamiento
+
+Este documento explica cómo calcular el tamaño del mensaje, la fragmentación en tramas, la sobrecarga de la capa 1 y la eficiencia del sistema de encapsulamiento.
+
+---
+
+## Enunciado
+
+Considera un sistema de encapsulamiento con la siguiente configuración:
+
+- **Capa 5**: Envía un bloque de datos de **1.5 Kbytes** (1 Kbyte = 1024 bytes).
+- **Capas 4 y 3**: Cada una añade una cabecera de **40 bytes**.
+- **Capa 2**: Permite el envío de tramas de **400 bytes** como máximo.
+- **Capa 1**: Por cada **2 bytes de datos**, se añaden:
+  - **1 byte de inicio**,
+  - **1 byte de parada**,
+  - **1 byte de CRC**.
+
+Se pide realizar los siguientes cálculos:
+
+1. **a)** Tamaño del Mensaje:  
+   Calcula el tamaño total del mensaje después de agregar las cabeceras de las capas 4 y 3.
+
+2. **b)** Fragmentación en Tramas:  
+   Determina el número de tramas de 400 bytes necesarias para transmitir el mensaje resultante.
+
+3. **c)** Sobrecarga de la Capa 1:  
+   Para cada trama de 400 bytes, calcula la cantidad de sobrecarga introducida por la capa 1.
+
+4. **d)** Eficiencia del Sistema:  
+   Calcula la eficiencia del sistema de encapsulamiento, definida como el porcentaje de datos útiles (del bloque original) respecto al total de datos transmitidos (incluyendo todas las sobrecargas).
+
+---
+
+## Paso a Paso
+
+### **a) Tamaño del Mensaje**
+
+1. **Datos originales de la Capa 5**:  
+   El bloque de datos tiene un tamaño de **1.5 Kbytes**:
+   \[
+   1.5 \, \text{Kbytes} = 1.5 \times 1024 = 1536 \, \text{bytes}
+   \]
+
+2. **Cabeceras de las Capas 4 y 3**:  
+   Cada capa añade una cabecera de **40 bytes**:
+   \[
+   \text{Cabeceras totales} = 40 \, \text{bytes} + 40 \, \text{bytes} = 80 \, \text{bytes}
+   \]
+
+3. **Tamaño total del mensaje**:  
+   Sumamos los datos originales y las cabeceras:
+   \[
+   \text{Tamaño total del mensaje} = 1536 \, \text{bytes} + 80 \, \text{bytes} = 1616 \, \text{bytes}
+   \]
+
+---
+
+### **b) Fragmentación en Tramas**
+
+1. **Tamaño máximo de una trama**:  
+   La capa 2 permite tramas de **400 bytes** como máximo.
+
+2. **Número de tramas necesarias**:  
+   Dividimos el tamaño total del mensaje entre el tamaño máximo de una trama y redondeamos hacia arriba:
+   \[
+   \text{Número de tramas} = \lceil \frac{1616}{400} \rceil = \lceil 4.04 \rceil = 5 \, \text{tramas}
+   \]
+
+---
+
+### **c) Sobrecarga de la Capa 1**
+
+1. **Sobrecarga por cada 2 bytes de datos**:  
+   Por cada **2 bytes de datos**, la capa 1 añade:
+   - **1 byte de inicio**,
+   - **1 byte de parada**,
+   - **1 byte de CRC**.
+
+   Esto significa que por cada **2 bytes de datos**, se añaden **3 bytes de sobrecarga**.
+
+2. **Datos útiles por trama**:  
+   Cada trama tiene un tamaño máximo de **400 bytes**, pero parte de este espacio se utiliza para la sobrecarga.  
+   La relación entre datos útiles y sobrecarga es:
+   \[
+   \text{Datos útiles por trama} = \frac{2}{2 + 3} \times 400 = \frac{2}{5} \times 400 = 160 \, \text{bytes}
+   \]
+
+3. **Sobrecarga por trama**:  
+   La sobrecarga por trama es el resto del espacio ocupado por los bytes de inicio, parada y CRC:
+   \[
+   \text{Sobrecarga por trama} = 400 - 160 = 240 \, \text{bytes}
+   \]
+
+4. **Sobrecarga total**:  
+   Multiplicamos la sobrecarga por trama por el número total de tramas:
+   \[
+   \text{Sobrecarga total} = 240 \, \text{bytes/trama} \times 5 \, \text{tramas} = 1200 \, \text{bytes}
+   \]
+
+---
+
+### **d) Eficiencia del Sistema**
+
+1. **Datos útiles totales**:  
+   Los datos útiles son los **1536 bytes** originales de la Capa 5.
+
+2. **Datos totales transmitidos**:  
+   Los datos totales transmitidos incluyen los datos útiles y todas las sobrecargas:
+   \[
+   \text{Datos totales transmitidos} = 5 \, \text{tramas} \times 400 \, \text{bytes/trama} = 2000 \, \text{bytes}
+   \]
+
+3. **Eficiencia del sistema**:  
+   La eficiencia se calcula como el porcentaje de datos útiles respecto al total de datos transmitidos:
+   \[
+   \text{Eficiencia} = \frac{\text{Datos útiles totales}}{\text{Datos totales transmitidos}} \times 100
+   \]
+   Sustituyendo los valores:
+   \[
+   \text{Eficiencia} = \frac{1536}{2000} \times 100 = 76.8\%
+   \]
+
+---
+
+## Resultados Finales
+
+1. **Tamaño del mensaje**:  
+   \[
+   1616 \, \text{bytes}
+   \]
+
+2. **Número de tramas necesarias**:  
+   \[
+   5 \, \text{tramas}
+   \]
+
+3. **Sobrecarga de la capa 1**:  
+   \[
+   1200 \, \text{bytes}
+   \]
+
+4. **Eficiencia del sistema**:  
+   \[
+   76.8\%
+   \]
+
+---
+
+## Conclusión
+
+El sistema de encapsulamiento tiene una eficiencia del **76.8%**, lo que significa que aproximadamente el **23.2%** de los datos transmitidos corresponden a sobrecargas. Este análisis muestra cómo las cabeceras y la fragmentación afectan la eficiencia del sistema de comunicación.
+
+---
+
+## Referencias
+- [Encapsulamiento en Redes - Wikipedia](https://es.wikipedia.org/wiki/Encapsulamiento_(redes))
+- [Eficiencia en Redes - Artículo Técnico](https://www.sciencedirect.com/topics/computer-science/network-efficiency)
+
+
+Simular el problema de Eficiencia del Sistema de Encapsulamiento en Cisco Packet Tracer no es algo que se pueda realizar directamente, ya que Packet Tracer no permite modelar el encapsulamiento a nivel de bits o bytes. Sin embargo, podemos aproximar el concepto configurando un sistema de red que transmita datos entre dispositivos y analizando el tráfico generado para observar cómo las cabeceras y la fragmentación afectan la transmisión. Aquí tienes un paso a paso detallado para resolver el problema y simularlo en Cisco Packet Tracer:
+
+Resolviendo el Problema de Eficiencia del Sistema de Encapsulamiento
+Enunciado
+Considera un sistema de encapsulamiento con la siguiente configuración:
+
+Capa 5: Envía un bloque de datos de 1.5 Kbytes (1 Kbyte = 1024 bytes).
+Capas 4 y 3: Cada una añade una cabecera de 40 bytes.
+Capa 2: Permite el envío de tramas de 400 bytes como máximo.
+Capa 1: Por cada 2 bytes de datos, se añaden:
+1 byte de inicio,
+1 byte de parada,
+1 byte de CRC.
+Se pide realizar los siguientes cálculos:
+
+a) Tamaño del Mensaje:
+Calcula el tamaño total del mensaje después de agregar las cabeceras de las capas 4 y 3.
+
+b) Fragmentación en Tramas:
+Determina el número de tramas de 400 bytes necesarias para transmitir el mensaje resultante.
+
+c) Sobrecarga de la Capa 1:
+Para cada trama de 400 bytes, calcula la cantidad de sobrecarga introducida por la capa 1.
+
+d) Eficiencia del Sistema:
+Calcula la eficiencia del sistema de encapsulamiento, definida como el porcentaje de datos útiles (del bloque original) respecto al total de datos transmitidos (incluyendo todas las sobrecargas).
+
+Paso a Paso
+a) Tamaño del Mensaje
+Datos originales de la Capa 5:
+El bloque de datos tiene un tamaño de 1.5 Kbytes: [ 1.5 , \text{Kbytes} = 1.5 \times 1024 = 1536 , \text{bytes} ]
+
+Cabeceras de las Capas 4 y 3:
+Cada capa añade una cabecera de 40 bytes: [ \text{Cabeceras totales} = 40 , \text{bytes} + 40 , \text{bytes} = 80 , \text{bytes} ]
+
+Tamaño total del mensaje:
+Sumamos los datos originales y las cabeceras: [ \text{Tamaño total del mensaje} = 1536 , \text{bytes} + 80 , \text{bytes} = 1616 , \text{bytes} ]
+
+b) Fragmentación en Tramas
+Tamaño máximo de una trama:
+La capa 2 permite tramas de 400 bytes como máximo.
+
+Número de tramas necesarias:
+Dividimos el tamaño total del mensaje entre el tamaño máximo de una trama y redondeamos hacia arriba: [ \text{Número de tramas} = \lceil \frac{1616}{400} \rceil = \lceil 4.04 \rceil = 5 , \text{tramas} ]
+
+c) Sobrecarga de la Capa 1
+Sobrecarga por cada 2 bytes de datos:
+Por cada 2 bytes de datos, la capa 1 añade:
+
+1 byte de inicio,
+1 byte de parada,
+1 byte de CRC.
+Esto significa que por cada 2 bytes de datos, se añaden 3 bytes de sobrecarga.
+
+Datos útiles por trama:
+Cada trama tiene un tamaño máximo de 400 bytes, pero parte de este espacio se utiliza para la sobrecarga.
+La relación entre datos útiles y sobrecarga es: [ \text{Datos útiles por trama} = \frac{2}{2 + 3} \times 400 = \frac{2}{5} \times 400 = 160 , \text{bytes} ]
+
+Sobrecarga por trama:
+La sobrecarga por trama es el resto del espacio ocupado por los bytes de inicio, parada y CRC: [ \text{Sobrecarga por trama} = 400 - 160 = 240 , \text{bytes} ]
+
+Sobrecarga total:
+Multiplicamos la sobrecarga por trama por el número total de tramas: [ \text{Sobrecarga total} = 240 , \text{bytes/trama} \times 5 , \text{tramas} = 1200 , \text{bytes} ]
+
+d) Eficiencia del Sistema
+Datos útiles totales:
+Los datos útiles son los 1536 bytes originales de la Capa 5.
+
+Datos totales transmitidos:
+Los datos totales transmitidos incluyen los datos útiles y todas las sobrecargas: [ \text{Datos totales transmitidos} = 5 , \text{tramas} \times 400 , \text{bytes/trama} = 2000 , \text{bytes} ]
+
+Eficiencia del sistema:
+La eficiencia se calcula como el porcentaje de datos útiles respecto al total de datos transmitidos: [ \text{Eficiencia} = \frac{\text{Datos útiles totales}}{\text{Datos totales transmitidos}} \times 100 ] Sustituyendo los valores: [ \text{Eficiencia} = \frac{1536}{2000} \times 100 = 76.8% ]
+
+Resultados Finales
+Tamaño del mensaje:
+[ 1616 , \text{bytes} ]
+
+Número de tramas necesarias:
+[ 5 , \text{tramas} ]
+
+Sobrecarga de la capa 1:
+[ 1200 , \text{bytes} ]
+
+Eficiencia del sistema:
+[ 76.8% ]
+
+Simulación en Cisco Packet Tracer
+Aunque Cisco Packet Tracer no permite modelar directamente el encapsulamiento, podemos simular el tráfico generado por un sistema de encapsulamiento utilizando los siguientes pasos:
+
+Paso 1: Configurar el entorno
+Abrir Cisco Packet Tracer:
+
+Inicia el programa y abre un nuevo proyecto.
+Agregar dispositivos:
+
+Arrastra dos PCs (PC0 y PC1) al área de trabajo.
+Conéctalas utilizando un switch.
+Configurar direcciones IP:
+
+Asigna direcciones IP a las PCs:
+PC0: 192.168.1.1
+PC1: 192.168.1.2
+Paso 2: Generar tráfico
+Configurar un servidor de archivos:
+
+Configura un servidor en PC1 para enviar un archivo de 1.5 KB a PC0.
+Capturar el tráfico:
+
+Usa la herramienta de captura de paquetes en el switch para observar el tráfico generado.
+Analiza los paquetes para identificar las cabeceras y la fragmentación.
+Paso 3: Analizar los resultados
+Observar la fragmentación:
+
+Verifica cómo el archivo de 1.5 KB se divide en tramas de 400 bytes.
+Observa las cabeceras añadidas en cada capa.
+Calcular la eficiencia:
+
+Compara el tamaño total de los datos transmitidos con el tamaño del archivo original para calcular la eficiencia.
+Conclusión
+La simulación en Cisco Packet Tracer permite observar cómo se fragmenta un archivo grande en tramas más pequeñas y cómo las cabeceras afectan la transmisión. Aunque no se puede modelar directamente el encapsulamiento, esta aproximación ayuda a entender el impacto de la fragmentación y la sobrecarga en la eficiencia del sistema.
+
+Referencias
+Encapsulamiento en Redes - Wikipedia
+Cisco Packet Tracer - Documentación Oficial
 
