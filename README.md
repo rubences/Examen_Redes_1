@@ -532,3 +532,225 @@ La simulación confirma que la separación adecuada de las portadoras garantiza 
 - [Teoría de la Comunicación - Wikipedia](https://es.wikipedia.org/wiki/Teor%C3%ADa_de_la_comunicaci%C3%B3n)
 
 
+# Ejercicio 9
+# Resolviendo el Problema de Identificación de Modulación en Función del BER
+
+Este documento explica cómo ordenar diferentes esquemas de modulación en función de su robustez ante el ruido, justificando la respuesta con base en el número de símbolos y la sensibilidad al ruido.
+
+---
+
+## Enunciado
+
+Se sabe que la robustez ante el ruido de una modulación depende del número de símbolos por baudio, de manera que:
+
+1. **BPSK (2-QAM)** es la más robusta.
+2. **QPSK (4 símbolos)** ofrece el doble de eficiencia que BPSK.
+3. A medida que se incrementa el número de símbolos (16-QAM, 64-QAM, 256-QAM), la eficiencia aumenta pero la tolerancia al ruido disminuye.
+
+Se pide:
+- Ordenar las siguientes modulaciones de mayor a menor robustez ante el ruido (para una misma SNR):
+  - BPSK
+  - QPSK
+  - 16-QAM
+  - 64-QAM
+  - 256-QAM
+- Justificar la respuesta basándose en el número de símbolos y la sensibilidad al ruido.
+
+---
+
+## Paso a Paso
+
+### Paso 1: Comprender la relación entre el número de símbolos y la robustez al ruido
+1. **BPSK (2-QAM)**:
+   - Tiene **2 símbolos**.
+   - Es la más robusta porque tiene la mayor distancia entre símbolos en el espacio de constelación, lo que la hace menos sensible al ruido.
+
+2. **QPSK (4-QAM)**:
+   - Tiene **4 símbolos**.
+   - Ofrece el doble de eficiencia espectral que BPSK, pero la distancia entre símbolos es menor, lo que la hace más sensible al ruido.
+
+3. **16-QAM**:
+   - Tiene **16 símbolos**.
+   - La eficiencia espectral aumenta significativamente, pero la distancia entre símbolos disminuye aún más, lo que la hace menos robusta al ruido.
+
+4. **64-QAM**:
+   - Tiene **64 símbolos**.
+   - La eficiencia espectral es mucho mayor, pero la distancia entre símbolos es muy pequeña, lo que la hace aún más sensible al ruido.
+
+5. **256-QAM**:
+   - Tiene **256 símbolos**.
+   - Es la modulación más eficiente en términos espectrales, pero también la más sensible al ruido debido a la mínima distancia entre símbolos.
+
+---
+
+### Paso 2: Ordenar las modulaciones de mayor a menor robustez al ruido
+Con base en la cantidad de símbolos y la sensibilidad al ruido, el orden de mayor a menor robustez es:
+
+1. **BPSK (2-QAM)**: Mayor robustez al ruido debido a la mayor distancia entre símbolos.
+2. **QPSK (4-QAM)**: Menor robustez que BPSK, pero aún tolerante al ruido.
+3. **16-QAM**: Moderada robustez al ruido, con mayor eficiencia espectral.
+4. **64-QAM**: Menor robustez al ruido, pero con alta eficiencia espectral.
+5. **256-QAM**: Menor robustez al ruido debido a la mínima distancia entre símbolos.
+
+---
+
+### Paso 3: Justificación de la respuesta
+1. **Relación entre el número de símbolos y la distancia entre ellos**:
+   - A medida que aumenta el número de símbolos en la constelación, la distancia entre ellos disminuye.
+   - Una menor distancia entre símbolos hace que la modulación sea más sensible al ruido, ya que pequeñas perturbaciones pueden causar errores en la detección.
+
+2. **Relación entre eficiencia espectral y robustez al ruido**:
+   - Modulaciones con más símbolos (como 256-QAM) son más eficientes en términos espectrales, ya que transmiten más bits por símbolo.
+   - Sin embargo, esta eficiencia viene a costa de una menor robustez al ruido.
+
+3. **BPSK como la más robusta**:
+   - BPSK tiene solo 2 símbolos, lo que maximiza la distancia entre ellos y minimiza la probabilidad de error debido al ruido.
+
+4. **256-QAM como la menos robusta**:
+   - 256-QAM tiene 256 símbolos, lo que reduce significativamente la distancia entre ellos, aumentando la probabilidad de error en presencia de ruido.
+
+---
+
+### Paso 4: Importancia de la selección de la modulación
+La elección del esquema de modulación depende del compromiso entre:
+- **Eficiencia espectral**: Cuántos bits se pueden transmitir por unidad de ancho de banda.
+- **Robustez al ruido**: La capacidad de la modulación para resistir perturbaciones en el canal.
+
+En sistemas con alta relación señal a ruido (SNR), se prefieren modulaciones como 64-QAM o 256-QAM para maximizar la eficiencia espectral. En sistemas con baja SNR, se prefieren modulaciones como BPSK o QPSK para garantizar la robustez al ruido.
+
+---
+
+## Resultado Final
+El orden de las modulaciones de mayor a menor robustez al ruido es:
+
+1. **BPSK (2-QAM)**
+2. **QPSK (4-QAM)**
+3. **16-QAM**
+4. **64-QAM**
+5. **256-QAM**
+
+---
+
+## Conclusión
+La robustez al ruido de una modulación está inversamente relacionada con el número de símbolos en la constelación. BPSK es la más robusta debido a su simplicidad y mayor distancia entre símbolos, mientras que 256-QAM es la menos robusta, aunque más eficiente espectralmente. La selección de la modulación adecuada depende de las condiciones del canal y los requisitos del sistema.
+
+---
+
+## Referencias
+- [Modulación Digital - Wikipedia](https://es.wikipedia.org/wiki/Modulaci%C3%B3n_digital)
+- [Relación Señal a Ruido - Wikipedia](https://es.wikipedia.org/wiki/Relaci%C3%B3n_se%C3%B1al-ruido)
+- [BER y Modulación - Artículo Técnico](https://www.sciencedirect.com/topics/engineering/bit-error-rate)
+
+
+# Resolviendo el Problema de Identificación de Modulación en Función del BER en Cisco Packet Tracer
+
+Este documento explica cómo simular un sistema de comunicación en **Cisco Packet Tracer** para analizar la robustez de diferentes esquemas de modulación en función del BER (Bit Error Rate).
+
+---
+
+## Enunciado
+
+Se sabe que la robustez ante el ruido de una modulación depende del número de símbolos por baudio, de manera que:
+
+1. **BPSK (2-QAM)** es la más robusta.
+2. **QPSK (4 símbolos)** ofrece el doble de eficiencia que BPSK.
+3. A medida que se incrementa el número de símbolos (16-QAM, 64-QAM, 256-QAM), la eficiencia aumenta pero la tolerancia al ruido disminuye.
+
+Se pide:
+- Ordenar las siguientes modulaciones de mayor a menor robustez ante el ruido (para una misma SNR):
+  - BPSK
+  - QPSK
+  - 16-QAM
+  - 64-QAM
+  - 256-QAM
+- Simular el sistema en **Cisco Packet Tracer** para analizar cómo la calidad del enlace afecta la transmisión de datos.
+
+---
+
+## Paso a Paso
+
+### Paso 1: Configurar el entorno en Cisco Packet Tracer
+1. **Abrir Cisco Packet Tracer**:
+   - Inicia el programa y abre un nuevo proyecto.
+
+2. **Agregar dispositivos**:
+   - Arrastra los siguientes dispositivos al área de trabajo:
+     - Un **Access Point** (AP).
+     - Dos **PCs inalámbricas** (PC0 y PC1).
+
+3. **Configurar el Access Point**:
+   - Haz clic en el Access Point y ve a la pestaña **Config**.
+   - Configura los siguientes parámetros:
+     - **SSID**: "Modulación_Test".
+     - **Frecuencia**: 2.4 GHz (frecuencia estándar para redes Wi-Fi).
+     - **Potencia de transmisión**: Ajusta la potencia para simular diferentes niveles de calidad de enlace.
+
+4. **Configurar las PCs inalámbricas**:
+   - Haz clic en cada PC y ve a la pestaña **Config**.
+   - Conéctalas al Access Point configurado.
+
+---
+
+### Paso 2: Simular diferentes niveles de calidad de enlace
+1. **Simular BPSK (2-QAM)**:
+   - Configura el Access Point con una **potencia de transmisión alta** (por ejemplo, 100%).
+   - Genera tráfico entre las PCs utilizando **Ping** o **Traceroute**.
+   - Observa que el enlace es robusto y los paquetes se transmiten sin errores.
+
+2. **Simular QPSK (4-QAM)**:
+   - Reduce la potencia de transmisión del Access Point al **75%**.
+   - Genera tráfico entre las PCs.
+   - Observa que el enlace sigue siendo estable, pero puede haber ligeros retrasos.
+
+3. **Simular 16-QAM**:
+   - Reduce la potencia de transmisión del Access Point al **50%**.
+   - Genera tráfico entre las PCs.
+   - Observa que el enlace comienza a experimentar pérdida de paquetes debido a la menor robustez.
+
+4. **Simular 64-QAM**:
+   - Reduce la potencia de transmisión del Access Point al **25%**.
+   - Genera tráfico entre las PCs.
+   - Observa que la pérdida de paquetes aumenta significativamente.
+
+5. **Simular 256-QAM**:
+   - Reduce la potencia de transmisión del Access Point al **10%**.
+   - Genera tráfico entre las PCs.
+   - Observa que el enlace es inestable y la mayoría de los paquetes no se transmiten correctamente.
+
+---
+
+### Paso 3: Analizar los resultados
+1. **Relación entre calidad del enlace y robustez**:
+   - A medida que se reduce la potencia de transmisión, el enlace se vuelve más sensible al ruido.
+   - Las modulaciones con más símbolos (como 256-QAM) son más propensas a errores en condiciones de baja calidad de enlace.
+
+2. **Comparar con los cálculos teóricos**:
+   - Verifica que los resultados observados en la simulación coincidan con el orden teórico de robustez:
+     - **BPSK > QPSK > 16-QAM > 64-QAM > 256-QAM**.
+
+---
+
+### Paso 4: Conclusión
+La simulación en **Cisco Packet Tracer** muestra cómo la calidad del enlace afecta la transmisión de datos. Aunque no se pueden simular directamente las modulaciones digitales, ajustar la potencia de transmisión del Access Point permite aproximar el comportamiento de diferentes esquemas de modulación en función de su robustez al ruido.
+
+---
+
+## Resultado Final
+El orden de las modulaciones de mayor a menor robustez al ruido es:
+
+1. **BPSK (2-QAM)**
+2. **QPSK (4-QAM)**
+3. **16-QAM**
+4. **64-QAM**
+5. **256-QAM**
+
+---
+
+## Referencias
+- [Modulación Digital - Wikipedia](https://es.wikipedia.org/wiki/Modulaci%C3%B3n_digital)
+- [Relación Señal a Ruido - Wikipedia](https://es.wikipedia.org/wiki/Relaci%C3%B3n_se%C3%B1al-ruido)
+- [Cisco Packet Tracer - Documentación Oficial](https://www.netacad.com/courses/packet-tracer)
+
+
+
+
